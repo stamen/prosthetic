@@ -1,20 +1,23 @@
 var fs = require("fs"),
     sys = require("sys"),
-    argv = require("optimist").argv,
-    argc = argv._,
-    source = String(fs.readFileSync("syringe.js"));
+    argv = require("optimist")
+      .usage("Customize your syringe!")
+      .argv,
+    argc = argv._;
 
-if (argc.length) {
+var source = String(fs.readFileSync("syringe.js"));
+
+if (argc.length > 0) {
   var filename = argc[0],
       config = String(fs.readFileSync(filename)),
-      result = source
-        .replace(/CONFIG_FILENAME/g, filename)
-        .replace("{/* CONFIG */}", indent(config, 2));
-  sys.puts(result);
+  source = source
+    .replace(/CONFIG_FILENAME/g, filename)
+    .replace("{/* CONFIG */}", indent(config, 2));
 } else {
   source = strip(source, "// <CONFIG", "// CONFIG>");
-  sys.puts(source);
 }
+
+sys.puts(source);
 
 // super hacky indentation formatter
 function indent(str, depth) {

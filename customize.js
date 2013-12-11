@@ -5,16 +5,16 @@ var fs = require("fs"),
       .argv,
     argc = argv._;
 
-var source = String(fs.readFileSync("syringe.js"));
+var source = fs.readFileSync("syringe.js").toString();
 
 if (argc.length > 0) {
   var filename = argc[0],
-      config = String(fs.readFileSync(filename)),
+      config = fs.readFileSync(filename).toString(),
   source = source
     .replace(/CONFIG_FILENAME/g, filename)
     .replace("{/* CONFIG */}", indent(config, 2));
 } else {
-  source = strip(source, "// <CONFIG", "// CONFIG>");
+  source = strip(source, "// <CONFIG>", "// </CONFIG>");
 }
 
 sys.puts(source);

@@ -10,7 +10,7 @@
     routes: []
   };
 
-  // <CONFIG CONFIG_FILENAME
+  // <CONFIG> CONFIG_FILENAME
   (function() {
     var custom = {/* CONFIG */};
     for (var key in custom) {
@@ -19,7 +19,7 @@
       }
     }
   })();
-  // CONFIG>
+  // </CONFIG>
 
   /*
    * This is the injection function, which is run at the bottom of this file.

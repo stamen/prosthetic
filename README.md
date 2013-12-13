@@ -1,12 +1,17 @@
-# Syringe
-Syringe is a Node web proxy that allows you to manipulate web sites with simple
-(yet flexible) JSON configuration files.
+# Prosthetic
+Prosthetic is a Node web proxy that allows you to manipulate web sites with
+simple (yet flexible) JSON configuration files. As a node module, it exposes an
+express-compatible server function (the module export) and a suite of
+operations for manipulating (inserting, removing and replacing) request body
+content.
 
-## Running your proxy server
+## Running the proxy
 To run a proxy, just run server.js with node:
 
 ```sh
 $ node server.js --proxy http://example.com
+# or
+$ ./server.js --proxy http://example.com
 ```
 
 Then visit [localhost:8001](http://localhost:8001) in your browser. Run `node

@@ -1,1 +1,1 @@
-module.exports = require("./lib/syringe");
+module.exports = require("./lib/prosthetic");

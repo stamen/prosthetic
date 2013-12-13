@@ -6,13 +6,13 @@ var fs = require("fs"),
     optimist = require("optimist")
       .usage([
         "Syringe usage:",
-        "1. with a proxy URL and one or more injections:",
-        "   $0 --proxy URL [injections]",
+        "1. with a proxy URL and one or more operation:",
+        "   $0 --proxy URL [operations]",
         "2. with a JSON config and proxy URL:",
-        "   $0 -c config.json --proxy URL [options] [injections]",
+        "   $0 -c config.json --proxy URL [options] [operations]",
         "3. with a JSON config that includes the 'proxy' option:",
-        "   $0 -c config.json [options] [injections]",
-        "where [injections] is an optional list of JSON filenames\ncontaining injection specs."
+        "   $0 -c config.json [options] [operations]",
+        "where [operations] is an optional list of JSON filenames\ncontaining operation specs."
       ].join("\n\n"))
       .option("proxy", {
         alias: "p",
@@ -33,9 +33,9 @@ var fs = require("fs"),
       }),
     argv = optimist.argv,
     argc = argv._,
-    syringe = require("./lib/syringe");
+    prosthetic = require("./index");
 
-var inject,
+var operate,
     config = {
       proxy:        argv.proxy,
       rewriteUrls:  argv.rewrite
@@ -61,7 +61,7 @@ if (!config.proxy) {
   return optimist.showHelp();
 }
 
-var inject = syringe(config);
+var operate = prosthetic(config);
 argc.forEach(function(filename) {
   try {
     var ops = JSON.parse(fs.readFileSync(filename));
@@ -69,14 +69,14 @@ argc.forEach(function(filename) {
     console.warn("unable to parse config in", filename, ":", err);
   }
   console.log("+ adding ops from:", filename);
-  inject.add(ops);
+  operate.add(ops);
 });
 
 var app = express();
-app.use(inject);
+app.use(operate);
 app.listen(argv.port || process.env.PORT || DEFAULT_PORT, function() {
   var addr = this.address(),
       base = ["http://", addr.address, ":", addr.port].join("");
-  inject.base(base);
+  operate.base(base);
   console.log("+ listening at:", base);
 });

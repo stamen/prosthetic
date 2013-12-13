@@ -1,0 +1,14 @@
+[
+  {
+    "comment": "replace all <link rel=stylesheet> elements",
+    "type": "replace",
+    "input": "<link[^>]+rel=.?stylesheet.?[^>]*>(</link>)?",
+    "output": ""
+  },
+  {
+    "comment": "replace all <style> elements",
+    "type": "replace",
+    "input": "<style[^>]*>[^<]*</style>",
+    "output": ""
+  }
+]

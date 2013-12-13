@@ -1,0 +1,6 @@
+{
+  "proxy": "http://example.com",
+  "rewriteUrls": true,
+  "ops": [
+  ]
+}

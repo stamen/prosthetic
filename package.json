@@ -4,12 +4,20 @@
   "description": "ERROR: No README.md file found!",
   "main": "syringe.js",
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "start": "node server.js"
   },
   "repository": "",
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "optimist": "~0.6.0"
-  }
+    "optimist": "~0.6.0",
+    "express": "~3.4.7",
+    "request": "~2.29.0"
+  },
+  "gitHead": "35526a63cd98b20ac316ca05abef07edf41b66e8",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {}
 }

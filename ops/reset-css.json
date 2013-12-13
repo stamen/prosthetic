@@ -1,0 +1,7 @@
+{
+  "type": "style",
+  "url": "http://yui.yahooapis.com/3.14.0/build/cssreset/cssreset-min.css",
+  "attrs": {
+    "id": "reset-css"
+  }
+}

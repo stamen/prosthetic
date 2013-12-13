@@ -59,6 +59,8 @@ if (!config.proxy && argc.length) {
 }
 if (!config.proxy) {
   return optimist.showHelp();
+} else if (config.proxy.indexOf("://") === -1) {
+  config.proxy = "http://" + config.proxy;
 }
 
 var operate = prosthetic(config);

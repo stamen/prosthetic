@@ -50,3 +50,45 @@ For instance, the included [d3.json](ops/d3.json) simply adds
 [d3.js](http://d3js.org) to the proxied web page, and
 [reset-css.json](ops/reset-css.json) pulls in the [YUI CSS
 Reset](http://yuilibrary.com/yui/docs/cssreset/).
+
+# Operations
+Operations are what Prosthesis does to the contents of proxied web pages.
+Positional arguments to `server.js` are interpreted as filenames parsed as
+JSON operation specs. Supported operations include inserting text,
+HTML elements, scripts and stylesheets; and replacing or removing content.
+
+Add a script (e.g., [d3.js](http://d3js.org)):
+
+```json
+{
+  "type": "script",
+  "url": "http://d3js.org/d3.v3.min.js"
+}
+```
+
+Add a stylesheet (e.g., [reset css](http://yuilibrary.com/yui/docs/cssreset/)):
+
+```json
+{
+  "type": "style",
+  "url": "http://yui.yahooapis.com/3.14.0/build/cssreset/cssreset-min.css"
+}
+```
+
+To propose a redesign for a web site with your own stylesheets, you could remove
+all of the CSS from each page first (the "comment" fields are ignored):
+
+```json
+[
+  {
+    "comment": "replace all <link rel=stylesheet> elements",
+    "type": "remove",
+    "text": "<link[^>]+rel=.?stylesheet.?[^>]*>(</link>)?"
+  },
+  {
+    "comment": "replace all <style> elements",
+    "type": "remove",
+    "text": "<style[^>]*>[^<]*</style>"
+  }
+]
+```

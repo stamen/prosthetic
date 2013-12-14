@@ -1,8 +1,9 @@
 {
-  "name": "syringe",
-  "version": "0.0.4",
-  "description": "ERROR: No README.md file found!",
-  "main": "syringe.js",
+  "name": "prosthetic",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": "proxy",
   "scripts": {
     "test": "make test",
     "start": "node server.js"

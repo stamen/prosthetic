@@ -11,7 +11,7 @@
   "author": "Shawn Allen <shawn@stamen.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/shawnbot/dtools.git"
+    "url": "git://github.com/stamen/prosthetic.git"
   },
   "license": "BSD",
   "dependencies": {

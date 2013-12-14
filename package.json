@@ -1,24 +1,23 @@
 {
   "name": "prosthetic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
-  "keywords": "proxy",
+  "keywords": ["web", "server", "proxy"],
   "scripts": {
     "test": "make test",
     "start": "node server.js"
   },
-  "repository": "",
-  "author": "",
+  "author": "Shawn Allen <shawn@stamen.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shawnbot/dtools.git"
+  },
   "license": "BSD",
   "dependencies": {
     "optimist": "~0.6.0",
     "express": "~3.4.7",
     "request": "~2.29.0"
-  },
-  "gitHead": "35526a63cd98b20ac316ca05abef07edf41b66e8",
-  "directories": {
-    "test": "tests"
   },
   "devDependencies": {}
 }

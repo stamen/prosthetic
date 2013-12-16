@@ -2,7 +2,7 @@
 Prosthetic is a Node web proxy that allows you to manipulate web sites with
 simple (yet flexible) JSON configuration files. As a node module, it exposes an
 express-compatible server function (the module export) and a suite of
-operations for manipulating (inserting, removing and replacing) request body
+operations for manipulating (inserting, removing and replacing) response body
 content.
 
 ## Running the proxy

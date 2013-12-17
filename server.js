@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var fs = require("fs"),
     url = require("url"),
+    path = require("path"),
     express = require("express"),
     DEFAULT_PORT = 8001,
     optimist = require("optimist")
@@ -27,6 +28,10 @@ var fs = require("fs"),
         alias: "c",
         describe: "the config file to load"
       })
+      .option("static", {
+        alias: "s",
+        describe: "Where to serve static assets ('/url:local-path')"
+      })
       .option("port", {
         alias: "P",
         describe: "the port on which to listen (default: " + DEFAULT_PORT + ")",
@@ -38,7 +43,8 @@ var fs = require("fs"),
 var operate,
     config = {
       proxy:        argv.proxy,
-      rewriteUrls:  argv.rewrite
+      rewriteUrls:  argv.rewrite,
+      static:       argv.static
     };
 
 if (argv.config) {
@@ -57,6 +63,7 @@ if (!config.proxy && argc.length) {
   config.proxy = argc.shift();
   console.warn("no proxy declared, using the first argument:", config.proxy);
 }
+
 if (!config.proxy) {
   return optimist.showHelp();
 } else if (config.proxy.indexOf("://") === -1) {
@@ -75,6 +82,28 @@ argc.forEach(function(filename) {
 });
 
 var app = express();
+
+if (config.static) {
+  var staticUrl = "/",
+      staticPath = "";
+  switch (typeof config.static) {
+    case "object":
+      staticUrl = config.static.url;
+      staticPath = config.static.path;
+      break;
+    case "string":
+      if (config.static.indexOf(":") > -1) {
+        var bits = config.static.split(":", 2);
+        staticUrl = bits[0];
+        staticPath = bits[1];
+      }
+      break;
+  }
+  staticPath = path.resolve(__dirname, staticPath);
+  console.warn("serving static assets on:", staticUrl, "from:", staticPath);
+  app.use(staticUrl, express.static(staticPath));
+}
+
 app.use(operate);
 app.listen(argv.port || process.env.PORT || DEFAULT_PORT, function() {
   var addr = this.address(),

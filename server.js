@@ -99,7 +99,7 @@ if (config.static) {
       }
       break;
   }
-  staticPath = path.resolve(__dirname, staticPath);
+  staticPath = path.resolve(process.cwd(), staticPath);
   console.warn("serving static assets on:", staticUrl, "from:", staticPath);
   app.use(staticUrl, express.static(staticPath));
 }

@@ -18,7 +18,7 @@ Then visit [localhost:8001](http://localhost:8001) in your browser. Run `node
 server.js --help` (or without any arguments) to see the full usage:
 
 ```
-Syringe usage:
+Usage:
 
 1. with a proxy URL and one or more injections:
 
@@ -52,7 +52,7 @@ For instance, the included [d3.json](ops/d3.json) simply adds
 Reset](http://yuilibrary.com/yui/docs/cssreset/).
 
 # Operations
-Operations are what Prosthesis does to the contents of proxied web pages.
+Operations are what Prosthetic does to the contents of proxied web pages.
 Positional arguments to `server.js` are interpreted as filenames parsed as
 JSON operation specs. Supported operations include inserting text,
 HTML elements, scripts and stylesheets; and replacing or removing content.

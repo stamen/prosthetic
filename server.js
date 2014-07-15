@@ -75,7 +75,8 @@ argc.forEach(function(filename) {
   try {
     var ops = JSON.parse(fs.readFileSync(filename));
   } catch (err) {
-    console.warn("unable to parse config in", filename, ":", err);
+    console.error("unable to parse config in", filename, ":", err);
+    return;
   }
   console.log("+ adding ops from:", filename);
   operate.add(ops);

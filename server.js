@@ -6,7 +6,7 @@ var fs = require("fs"),
     DEFAULT_PORT = 8001,
     optimist = require("optimist")
       .usage([
-        "Syringe usage:",
+        "Usage:",
         "1. with a proxy URL and one or more operation:",
         "   $0 --proxy URL [operations]",
         "2. with a JSON config and proxy URL:",

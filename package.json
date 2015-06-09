@@ -5,10 +5,10 @@
   "main": "index.js",
   "keywords": ["web", "server", "proxy"],
   "scripts": {
-    "test": "make test",
-    "start": "node server.js"
+    "test": "make test"
   },
   "author": "Shawn Allen <shawn@stamen.com>",
+  "bin": "server.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/stamen/prosthetic.git"
@@ -18,6 +18,5 @@
     "optimist": "~0.6.0",
     "express": "~3.4.7",
     "request": "~2.29.0"
-  },
-  "devDependencies": {}
+  }
 }
